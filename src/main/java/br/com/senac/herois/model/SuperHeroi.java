@@ -1,5 +1,6 @@
 package br.com.senac.herois.model;
 
+<<<<<<< HEAD
 import java.util.Date;
 
 public class SuperHeroi {
@@ -20,6 +21,49 @@ public class SuperHeroi {
         this.fraqueza = fraqueza;
         this.historiaOrigem = historiaOrigem;
         this.primeiraAparicao = primeiraAparicao;
+=======
+import jakarta.persistence.*;
+
+import java.util.Date;
+
+@Entity
+@Table(name = "super_heroi")
+public class SuperHeroi {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+    @Column(name = "NOME")
+    private String nome;
+    @Column(name = "APELIDO")
+    private String apelido;
+    @Column(name = "SUPERPODER")
+    private String superPoder;
+    @Column(name = "FRAQUEZA")
+    private String fraqueza;
+    @Column (name = "HISTORIAORIGEM")
+    private String historiaOrigem;
+    @Column(name = "PRIMEIRA_APARICAO")
+    private Date primeiraAparicao;
+
+    @OneToOne
+    @JoinColumn(name = "equipes_id", referencedColumnName = "id")
+    private Equipe equipe;
+
+    //Construtor
+    public SuperHeroi() {
+
+    }
+
+    public SuperHeroi(Long id, String nome, String apelido, String superpoder, String fraqueza, String historiaOrigem, Date primeiraAparicao, Equipe equipe) {
+        this.id = id;
+        this.nome = nome;
+        this.apelido = apelido;
+        this.superPoder = superpoder;
+        this.fraqueza = fraqueza;
+        this.historiaOrigem = historiaOrigem;
+        this.primeiraAparicao = primeiraAparicao;
+        this.equipe = equipe;
+>>>>>>> e22ce2e (Inicializando commit e adicionando o projeto herois no Github)
     }
 
     //Getters and Setters
@@ -48,11 +92,19 @@ public class SuperHeroi {
     }
 
     public String getSuperpoder() {
+<<<<<<< HEAD
         return superpoder;
     }
 
     public void setSuperpoder(String superpoder) {
         this.superpoder = superpoder;
+=======
+        return superPoder;
+    }
+
+    public void setSuperpoder(String superpoder) {
+        this.superPoder = superpoder;
+>>>>>>> e22ce2e (Inicializando commit e adicionando o projeto herois no Github)
     }
 
     public String getFraqueza() {
@@ -78,4 +130,15 @@ public class SuperHeroi {
     public void setPrimeiraAparicao(Date primeiraAparicao) {
         this.primeiraAparicao = primeiraAparicao;
     }
+<<<<<<< HEAD
+=======
+
+    public Equipe getEquipe() {
+        return equipe;
+    }
+
+    public void setEquipe(Equipe equipe) {
+        this.equipe = equipe;
+    }
+>>>>>>> e22ce2e (Inicializando commit e adicionando o projeto herois no Github)
 }
