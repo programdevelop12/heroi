@@ -1,69 +1,47 @@
 package br.com.senac.herois.model;
 
-<<<<<<< HEAD
-import java.util.Date;
-
-public class SuperHeroi {
-    private Long id;
-    private String nome;
-    private String apelido;
-    private String superpoder;
-    private String fraqueza;
-    private String historiaOrigem;
-    private Date primeiraAparicao;
-
-    //Construtor
-    public SuperHeroi(Long id, String nome, String apelido, String superpoder, String fraqueza, String historiaOrigem, Date primeiraAparicao) {
-        this.id = id;
-        this.nome = nome;
-        this.apelido = apelido;
-        this.superpoder = superpoder;
-        this.fraqueza = fraqueza;
-        this.historiaOrigem = historiaOrigem;
-        this.primeiraAparicao = primeiraAparicao;
-=======
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.*;
 
 import java.util.Date;
 
 @Entity
-@Table(name = "super_heroi")
+@Table (name = "super_heroi")
 public class SuperHeroi {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue (strategy = GenerationType.IDENTITY)
     private Long id;
-    @Column(name = "NOME")
+    @Column
     private String nome;
-    @Column(name = "APELIDO")
+    @Column
     private String apelido;
-    @Column(name = "SUPERPODER")
+    @Column
     private String superPoder;
-    @Column(name = "FRAQUEZA")
+    @Column
     private String fraqueza;
-    @Column (name = "HISTORIAORIGEM")
+    @Column
     private String historiaOrigem;
-    @Column(name = "PRIMEIRA_APARICAO")
+    @Column
     private Date primeiraAparicao;
-
-    @OneToOne
-    @JoinColumn(name = "equipes_id", referencedColumnName = "id")
+    @ManyToOne
+    @JoinColumn(name = "equipe_id", referencedColumnName = "id")
+    @JsonBackReference
     private Equipe equipe;
 
     //Construtor
-    public SuperHeroi() {
-
-    }
-
-    public SuperHeroi(Long id, String nome, String apelido, String superpoder, String fraqueza, String historiaOrigem, Date primeiraAparicao, Equipe equipe) {
+    public SuperHeroi(Long id, String nome, String apelido, String superPoder, String fraqueza, String historiaOrigem, Date primeiraAparicao, Equipe equipe) {
         this.id = id;
         this.nome = nome;
         this.apelido = apelido;
-        this.superPoder = superpoder;
+        this.superPoder = superPoder;
         this.fraqueza = fraqueza;
         this.historiaOrigem = historiaOrigem;
         this.primeiraAparicao = primeiraAparicao;
         this.equipe = equipe;
->>>>>>> e22ce2e (Inicializando commit e adicionando o projeto herois no Github)
+    }
+
+    public SuperHeroi() {
+
     }
 
     //Getters and Setters
@@ -91,20 +69,12 @@ public class SuperHeroi {
         this.apelido = apelido;
     }
 
-    public String getSuperpoder() {
-<<<<<<< HEAD
-        return superpoder;
-    }
-
-    public void setSuperpoder(String superpoder) {
-        this.superpoder = superpoder;
-=======
+    public String getSuperPoder() {
         return superPoder;
     }
 
-    public void setSuperpoder(String superpoder) {
-        this.superPoder = superpoder;
->>>>>>> e22ce2e (Inicializando commit e adicionando o projeto herois no Github)
+    public void setSuperPoder(String superPoder) {
+        this.superPoder = superPoder;
     }
 
     public String getFraqueza() {
@@ -130,8 +100,6 @@ public class SuperHeroi {
     public void setPrimeiraAparicao(Date primeiraAparicao) {
         this.primeiraAparicao = primeiraAparicao;
     }
-<<<<<<< HEAD
-=======
 
     public Equipe getEquipe() {
         return equipe;
@@ -140,5 +108,18 @@ public class SuperHeroi {
     public void setEquipe(Equipe equipe) {
         this.equipe = equipe;
     }
->>>>>>> e22ce2e (Inicializando commit e adicionando o projeto herois no Github)
+
+    @Override
+    public String toString() {
+        return "SuperHeroi{" +
+                "id=" + id +
+                ", nome='" + nome + '\'' +
+                ", apelido='" + apelido + '\'' +
+                ", superPoder='" + superPoder + '\'' +
+                ", fraqueza='" + fraqueza + '\'' +
+                ", historiaOrigem='" + historiaOrigem + '\'' +
+                ", primeiraAparicao=" + primeiraAparicao +
+                ", equipe=" + equipe +
+                '}';
+    }
 }

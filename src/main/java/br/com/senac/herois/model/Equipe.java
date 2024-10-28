@@ -16,6 +16,9 @@ public class Equipe {
         this.id = id;
         this.nome = nome;
     }
+    public Equipe() {
+
+    }
 
     //Getters and Setters
     public Long getId() {

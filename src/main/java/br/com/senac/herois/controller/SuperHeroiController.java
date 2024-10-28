@@ -1,11 +1,7 @@
 package br.com.senac.herois.controller;
 
-<<<<<<< HEAD
-public class SuperHeroiController {
-=======
 import br.com.senac.herois.model.SuperHeroi;
 import br.com.senac.herois.repository.SuperHeroiRepository;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -21,7 +17,7 @@ public class SuperHeroiController {
     }
 
     @GetMapping("/superherois") //Listar todos os Super Herois cadastrados no Banco de Dados
-    public ResponseEntity<?> getSuperHeroiList(){
+    public ResponseEntity<?> getSuperHeroiList() {
         return new ResponseEntity<>(superHeroiRepository.findAll(), HttpStatus.OK);
     }
 
@@ -31,7 +27,7 @@ public class SuperHeroiController {
     }
 
     @PostMapping("/superherois")
-    public ResponseEntity<?> salvarSuperHeroi (@RequestBody SuperHeroi entity) {
+    public ResponseEntity<?> salvarSuperHeroi(@RequestBody SuperHeroi entity) {
         SuperHeroi superHeroiSalvo;
         try {
             superHeroiSalvo = superHeroiRepository.save(entity);
@@ -43,7 +39,7 @@ public class SuperHeroiController {
     }
 
     @PutMapping("/superherois/{id}")
-    public ResponseEntity<?> atualizarSuperHeroi (@PathVariable Long id, @RequestBody SuperHeroi entity) {
+    public ResponseEntity<?> atualizarSuperHeroi(@PathVariable Long id, @RequestBody SuperHeroi entity) {
         Optional<SuperHeroi> superHeroiAtualizar = superHeroiRepository.findById(id);
         SuperHeroi sh = null;
 
@@ -52,7 +48,7 @@ public class SuperHeroiController {
 
             sh.setNome(entity.getNome());
             sh.setApelido(entity.getApelido());
-            sh.setSuperpoder(entity.getSuperpoder());
+            sh.setSuperPoder(entity.getSuperPoder());
             sh.setFraqueza(entity.getFraqueza());
             sh.setHistoriaOrigem(entity.getHistoriaOrigem());
             sh.setPrimeiraAparicao(entity.getPrimeiraAparicao());
@@ -70,7 +66,7 @@ public class SuperHeroiController {
     }
 
     @DeleteMapping("/superherois/{id}")
-    public ResponseEntity<?> deleteSuperHeroi (@PathVariable Long id) {
+    public ResponseEntity<?> deleteSuperHeroi(@PathVariable Long id) {
         Optional<SuperHeroi> superHeroiExcluir = superHeroiRepository.findById(id);
         SuperHeroi sh = null;
 
@@ -87,5 +83,4 @@ public class SuperHeroiController {
             return new ResponseEntity<String>("Super Heroi nao encontrado", HttpStatus.BAD_REQUEST);
         }
     }
->>>>>>> e22ce2e (Inicializando commit e adicionando o projeto herois no Github)
 }
