@@ -25,7 +25,6 @@ public class SuperHeroi {
     private Date primeiraAparicao;
     @ManyToOne
     @JoinColumn(name = "equipe_id", referencedColumnName = "id")
-    @JsonBackReference
     private Equipe equipe;
 
     //Construtor
@@ -101,7 +100,10 @@ public class SuperHeroi {
         this.primeiraAparicao = primeiraAparicao;
     }
 
-    public Equipe getEquipe() {
+    public Equipe getEquipe()  {
+        if (equipe != null) {
+            equipe.setSuperHerois(null);
+        }
         return equipe;
     }
 

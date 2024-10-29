@@ -2,6 +2,7 @@ package br.com.senac.herois.controller;
 
 import br.com.senac.herois.model.SuperHeroi;
 import br.com.senac.herois.repository.SuperHeroiRepository;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -12,6 +13,7 @@ import java.util.Optional;
 public class SuperHeroiController {
     private SuperHeroiRepository superHeroiRepository;
 
+    @Autowired
     public SuperHeroiController(SuperHeroiRepository superHeroiRepository) {
         this.superHeroiRepository = superHeroiRepository;
     }
